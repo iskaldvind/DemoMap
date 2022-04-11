@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "192904248480",
+    "project_id": "demomap-9bb9b",
+    "storage_bucket": "demomap-9bb9b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:192904248480:android:bb82b2574d186221e51dc5",
+        "android_client_info": {
+          "package_name": "studio.iskaldvind.demomap"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "192904248480-g0digvoeiqce2rv5f0ro1299n9ubg3v1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7sTVTWo1NMcKCT9cLhb7YWQnRdZ0A6SY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "192904248480-g0digvoeiqce2rv5f0ro1299n9ubg3v1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

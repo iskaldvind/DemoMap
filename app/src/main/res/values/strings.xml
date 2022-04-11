@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">DemoMap</string>
+    <string name="permissions_locations_title">Accesss to geolocation</string>
+    <string name="permissions_locations_coarse">App will ask you to provide access to your device coarse and fine location in order to draw map.</string>
+    <string name="permissions_positive">I understand</string>
+    <string name="permissions_locations_not_granted">App was not allowed to access your location</string>
+</resources>
