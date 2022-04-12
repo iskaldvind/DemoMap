@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "192904248480",
+    "firebase_url": "https://demomap-9bb9b-default-rtdb.europe-west1.firebasedatabase.app",
     "project_id": "demomap-9bb9b",
     "storage_bucket": "demomap-9bb9b.appspot.com"
   },

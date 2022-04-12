@@ -1,11 +1,11 @@
 package studio.iskaldvind.demomap.model.states
 
-import studio.iskaldvind.demomap.model.entities.Marker
+import studio.iskaldvind.demomap.model.entities.AppMarker
 
 sealed class MapState {
 	object Loading : MapState()
 	data class Data(
-		val markers: List<Marker>,
+		val markers: List<AppMarker>,
 		val latitude: Double,
 		val longitude: Double
 	) : MapState()

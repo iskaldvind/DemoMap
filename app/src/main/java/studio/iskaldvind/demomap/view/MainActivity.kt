@@ -13,7 +13,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
-import studio.iskaldvind.demomap.core.base.BaseActivity
+import studio.iskaldvind.demomap.core.BaseActivity
 import studio.iskaldvind.demomap.R.layout.main_activity
 import studio.iskaldvind.demomap.databinding.MainActivityBinding
 import studio.iskaldvind.demomap.viewmodel.main.MainViewModel
@@ -32,16 +32,7 @@ class MainActivity : BaseActivity(main_activity) {
 	private val binding: MainActivityBinding by viewBinding()
 	private val viewModel: MainViewModel by viewModel()
 
-	private enum class Navs {
-		Map, Details;
-
-		override fun toString(): String {
-			return when (this) {
-				Map -> "map"
-				Details -> "details"
-			}
-		}
-	}
+	private enum class Navs { Map, Details }
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
@@ -70,12 +61,34 @@ class MainActivity : BaseActivity(main_activity) {
 	}
 
 	private fun showFragment(nav: Navs) {
-		val transaction = supportFragmentManager.beginTransaction()
-		val fragment = when (nav) {
-			Navs.Map -> MapFragment.newInstance()
-			Navs.Details -> ListFragment.newIntance()
+		when (nav) {
+			Navs.Map -> showMap()
+			Navs.Details -> showDetails()
 		}
-		transaction.replace(R.id.fragment, fragment, nav.toString())
+	}
+
+	fun showEdit(id: Int, latitude: Double, longitude: Double, title: String, annotation: String) {
+		val transaction = supportFragmentManager.beginTransaction()
+		val fragment = EditFragment.newInstance(
+			id = id,
+			latitude = latitude,
+			longitude = longitude,
+			title = title,
+			annotation = annotation
+		)
+		transaction.replace(R.id.fragment, fragment, EditFragment.TAG).commit()
+	}
+
+	fun showDetails() {
+		val transaction = supportFragmentManager.beginTransaction()
+		val fragment = ListFragment.newInstance()
+		transaction.replace(R.id.fragment, fragment, ListFragment.TAG).commit()
+	}
+
+	private fun showMap() {
+		val transaction = supportFragmentManager.beginTransaction()
+		val fragment = MapFragment.newInstance()
+		transaction.replace(R.id.fragment, fragment, ListFragment.TAG).commit()
 	}
 
 	private fun setActiveNav(nav: Navs) {

@@ -1,4 +1,4 @@
-package studio.iskaldvind.demomap.core.base
+package studio.iskaldvind.demomap.core
 
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity

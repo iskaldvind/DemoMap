@@ -1,10 +1,9 @@
 package studio.iskaldvind.demomap.viewmodel.map
 
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import studio.iskaldvind.demomap.core.base.BaseViewModel
+import studio.iskaldvind.demomap.core.BaseViewModel
+import studio.iskaldvind.demomap.model.entities.AppMarker
 import studio.iskaldvind.demomap.model.states.LocationState
-import studio.iskaldvind.demomap.model.states.MainState
 import studio.iskaldvind.demomap.model.states.MapState
 import studio.iskaldvind.demomap.utils.Geolocator
 
@@ -43,7 +42,33 @@ class MapViewModel(
 		getData()
 	}
 
-	private fun getData() {
+	fun newMarker(latitude: Double, longitude: Double) {
+		viewModelCoroutineScope.launch {
+			interactor.addMarker(latitude = latitude, longitude = longitude) { id ->
+				val data = mapData
+				if (data == null || id == -1) return@addMarker
+				data.copy(
+					markers = data.markers
+							+ AppMarker(id = id, latitude = latitude, longitude = longitude)
+				).also { newData ->
+					mapData = newData
+					internalState.value = newData
+				}
+			}
+		}
+	}
 
+	private fun getData() {
+		viewModelCoroutineScope.launch {
+			interactor.getMarkers { markers ->
+				val data = mapData ?: return@getMarkers
+				data.copy(
+					markers = markers
+				).also { newData ->
+					mapData = newData
+					internalState.value = newData
+				}
+			}
+		}
 	}
 }

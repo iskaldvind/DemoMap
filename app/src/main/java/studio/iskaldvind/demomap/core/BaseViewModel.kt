@@ -1,4 +1,4 @@
-package studio.iskaldvind.demomap.core.base
+package studio.iskaldvind.demomap.core
 
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.*
@@ -24,7 +24,7 @@ abstract class BaseViewModel<T> : ViewModel() {
 		cancelJob()
 	}
 	
-	fun cancelJob() =
+	private fun cancelJob() =
 		viewModelCoroutineScope.coroutineContext.cancelChildren()
 	
 	abstract fun handleError(error: Throwable)

@@ -1,7 +1,7 @@
 package studio.iskaldvind.demomap.viewmodel.main
 
 import kotlinx.coroutines.launch
-import studio.iskaldvind.demomap.core.base.BaseViewModel
+import studio.iskaldvind.demomap.core.BaseViewModel
 import studio.iskaldvind.demomap.model.states.MainState
 
 class MainViewModel(

@@ -1,5 +1,6 @@
 package studio.iskaldvind.demomap.utils
 
+import android.annotation.SuppressLint
 import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
@@ -62,6 +63,7 @@ class Geolocator(
 		}
 	}
 
+	@SuppressLint("MissingPermission")
 	fun startLocationUpdates(
 		locationThresholdGrad: Float,
 		intervalGPSMsec: Long,
@@ -69,6 +71,12 @@ class Geolocator(
 		intervalPassiveMsec: Long
 	) {
 		locationThreshold = locationThresholdGrad
+		if (lastLatitude != DEFAULT_COORDINATE && lastLongitude != DEFAULT_COORDINATE) {
+			geolocatorCoroutineScope.launch {
+				internalState.value = LocationState
+					.Data(latitude = lastLatitude, longitude = lastLongitude)
+			}
+		}
 		try {
 			lastKnownLocation = lastKnownLocation
 				?: locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
